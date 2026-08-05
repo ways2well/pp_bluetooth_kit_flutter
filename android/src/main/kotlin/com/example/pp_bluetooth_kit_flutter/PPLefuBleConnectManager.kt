@@ -599,7 +599,12 @@ class PPLefuBleConnectManager private constructor(private val context: Context) 
 
             val userModel = PPUserModel.Builder().setPregnantMode(mode == 1).build()
 
-            jambulControl?.startBroadCast(UnitUtil.getUnitType(unitType), 1, jambulControl?.deviceModel?.deviceMac ?: "")
+            // Ways2Well fork: startBroadCast changed signature after 4.2.1.1 —
+            // (PPUnitType, Int, String) became (PPUnitType, PPUserModel?,
+            // PPDeviceModel?). userModel above was already built and discarded,
+            // so it feeds the new parameter directly. Jambul-only path; the
+            // CF597 (Torre) never reaches it.
+            jambulControl?.startBroadCast(UnitUtil.getUnitType(unitType), userModel, jambulControl?.deviceModel)
             sendCommonState(true, callBack)
         } else {
             loggerStreamHandler?.sendEvent("不支持的功能-jambul:${jambulControl}-peripheralType:${currentDevice?.getDevicePeripheralType()}")

@@ -72,12 +72,20 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //https://github.com/LefuHengqi/PPBaseKit-Android
+    // Ways2Well fork: upstream pins 4.2.1.1, which inlines its Android BLE
+    // transport (com.lefu.bluetooth.library) and subscribes to notifications on
+    // characteristic fff1. The CF597 carries no 0x2902 descriptor on fff1 — it
+    // notifies on fff4 — so the subscription fails ("getDescriptor for notify
+    // null!") and the scale drops the link before any weight is delivered.
+    // 4.6.20 moves that transport out to com.lefu:bluetoothkit:1.5.5, which
+    // subscribes to fff4 correctly. See FORK.md.
+    // iOS is unaffected — it uses the vendored xcframeworks, not these AARs.
     //基础模块，必须/Basic module, must
-    api 'com.lefu.ppbasekit:ppbasekit:4.2.1.1'
+    api 'com.lefu.ppbasekit:ppbasekit:4.6.20'
     //蓝牙协议模块，集成设备和解析体重信息/Bluetooth protocol module, integrating devices and parsing weight information
-    api 'com.lefu.ppbluetoothkit:ppbluetoothkit:4.2.1.1'
+    api 'com.lefu.ppbluetoothkit:ppbluetoothkit:4.6.20'
     //体脂计算库，根据需要引入/Body fat calculation library, introduced as needed
-//    api 'com.lefu.ppcalculatekit:ppcalculatekit:4.2.1.1'
+//    api 'com.lefu.ppcalculatekit:ppcalculatekit:4.6.20'
 
 
 
