@@ -5,16 +5,10 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext.kotlin_version = '1.8.22'
     repositories {
-
-        maven { url 'https://maven.aliyun.com/mvn/search' }
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-        maven { url 'https://maven.aliyun.com/repository/google/' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-
-        maven { url "https://raw.githubusercontent.com/LefuHengqi/PPBaseKit-Android/main" }
         google()
         mavenCentral()
+
+        maven { url "https://raw.githubusercontent.com/LefuHengqi/PPBaseKit-Android/main" }
     }
 
     dependencies {
@@ -25,16 +19,10 @@ buildscript {
 
 allprojects {
     repositories {
-
-        maven { url 'https://maven.aliyun.com/mvn/search' }
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-        maven { url 'https://maven.aliyun.com/repository/google/' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-
-        maven { url "https://raw.githubusercontent.com/LefuHengqi/PPBaseKit-Android/main" }
         google()
         mavenCentral()
+
+        maven { url "https://raw.githubusercontent.com/LefuHengqi/PPBaseKit-Android/main" }
     }
 }
 
