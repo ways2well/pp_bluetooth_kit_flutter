@@ -58,6 +58,25 @@ measuring → analyzing → success`, `PP_ERROR_TYPE_NONE`.
 
 Nothing else is touched — no Dart, no iOS, no behavioural changes.
 
+## Swift Package Manager
+
+`ios/pp_bluetooth_kit_flutter/Package.swift` supports Flutter 3.44+ SwiftPM
+integration on iOS 15+. It uses the existing PPBaseKit 1.2.17 and
+PPBluetoothKit binaries, moved unchanged beside the manifest, and the same
+Swift sources as CocoaPods. The podspec points to their new locations.
+
+The `PPBaseKit` product is exported for `w2w_body_composition`, so BLE and the
+calculator share one SDK instance. Flutter's generated `FlutterFramework`
+package supplies the Flutter module. ZipArchive stays at 2.4.3, matching the
+portal's current CocoaPods lock; its SwiftPM module is called `ZipArchive`, so
+the import is conditional.
+
+SwiftPM uses `-ObjC` without `-all_load`. Unlike the CocoaPods plugin framework,
+the SwiftPM graph is linked into the app together: `-all_load` would pull
+duplicate C implementation objects from PPBasicCalculateKit and fail linking.
+The portal's isolated LEFU check tests that the calculator category and matched
+PPBaseKit ABI survive final linking, and builds simulator and device targets.
+
 ## Upstream status
 
 Upstream's newest tag (0.1.1 at the time of writing) still passes the old

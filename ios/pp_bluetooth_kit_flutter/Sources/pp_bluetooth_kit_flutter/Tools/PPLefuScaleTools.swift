@@ -7,7 +7,11 @@
 
 
 import Foundation
+#if SWIFT_PACKAGE
+import ZipArchive
+#else
 import SSZipArchive
+#endif
 
 class PPLefuScaleTools {
     
