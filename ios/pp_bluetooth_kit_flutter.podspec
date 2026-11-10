@@ -13,13 +13,13 @@ A new Flutter plugin project.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'pp_bluetooth_kit_flutter/Sources/pp_bluetooth_kit_flutter/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '10.0'
 
   s.vendored_frameworks = [
-    'Frameworks/PPBaseKit.xcframework',
-    'Frameworks/PPBluetoothKit.xcframework',
+    'pp_bluetooth_kit_flutter/Frameworks/PPBaseKit.xcframework',
+    'pp_bluetooth_kit_flutter/Frameworks/PPBluetoothKit.xcframework',
     ]
 
   # Flutter.framework does not contain a i386 slice.
