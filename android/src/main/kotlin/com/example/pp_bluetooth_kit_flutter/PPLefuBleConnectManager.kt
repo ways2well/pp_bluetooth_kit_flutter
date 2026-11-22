@@ -830,7 +830,7 @@ class PPLefuBleConnectManager private constructor(private val context: Context) 
 
     var historyDataInterface = object : PPHistoryDataInterface() {
         override fun monitorHistoryData(bodyBaseModel: PPBodyBaseModel?, dateTime: String?) {
-            addPrint("monitorHistoryData weight: ${bodyBaseModel?.weight}" + " dateTime:$dateTime")
+            addPrint("monitorHistoryData")
         }
 
         override fun monitorHistoryEnd(deviceModel: PPDeviceModel?) {

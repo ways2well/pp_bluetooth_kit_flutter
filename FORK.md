@@ -56,7 +56,14 @@ measuring → analyzing → success`, `PP_ERROR_TYPE_NONE`.
    threw it away, so it now feeds the new parameter. This is the Jambul
    broadcast path; the CF597 is a Torre device and never reaches it.
 
-Nothing else is touched — no Dart, no iOS, no behavioural changes.
+3. **Release-safe logging** (`w2w-0.0.47.1`). Android now enables SDK debug
+   logging only in debuggable builds (it was always on), no longer prints the
+   app key, secret or licence string, and the history callback no longer logs
+   the weight. The Dart logger prints only in debug mode, and `initSDK` no
+   longer logs the key and secret. Release builds therefore stop writing the
+   licence and raw scale frames (weight, impedance, heart rate) to logcat.
+
+Nothing else is touched — no iOS native code, no behavioural changes.
 
 ## Upstream status
 
